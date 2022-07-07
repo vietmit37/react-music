@@ -15,15 +15,11 @@ export default function BgMusic() {
 
   return (
     <>
-      <img
-        className="background"
-        src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/221808/sky.jpg"
-        alt=""
-      />
+      <div className="background"></div>
       <p className="message">
-        all your dreams can come true
+        Nguyễn Kim Khánh An
         <br />
-        if you have the courage to pursue them
+        Choánn Nè
       </p>
       {renderDotLight()}
     </>

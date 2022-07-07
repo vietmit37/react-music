@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "url": "https://www.youtube.com/watch?v=JHSRTU31T14showinfo=0&enablejsapi=1&origin=http://localhost:3000",
+    "playing": false,
+    "singer": "Son Tung",
+    "nameMusic": "there's no one at all",
+    "category": "Pop",
+    "image": "./img/sonTung.jpg"
+  },
+  {
+    "id": 2,
+    "url": "https://www.youtube.com/watch?v=JxBnLmCOEJ8showinfo=0&enablejsapi=1&origin=http://localhost:3000",
+    "playing": false,
+    "singer": "Den vau",
+    "nameMusic": "Ai muon nghe khong",
+    "category": "Rap",
+    "image": "./img/den.jpg"
+  },
+  {
+    "id": 3,
+    "url": "https://www.youtube.com/watch?v=RZ85F0hNQg4",
+    "playing": false,
+    "singer": "Evon DEv",
+    "nameMusic": "Ai",
+    "category": "Rap",
+    "image": "./img/den.jpg"
+  }
+]

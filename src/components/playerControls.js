@@ -11,6 +11,7 @@ import FastForwardRounded from "@mui/icons-material/FastForwardRounded";
 import FastRewindRounded from "@mui/icons-material/FastRewindRounded";
 import VolumeUpRounded from "@mui/icons-material/VolumeUpRounded";
 import VolumeDownRounded from "@mui/icons-material/VolumeDownRounded";
+import { useDispatch } from "react-redux";
 
 const Widget = styled("div")(({ theme }) => ({
   padding: 16,
@@ -47,6 +48,8 @@ const TinyText = styled(Typography)({
 
 export default function PlayerControls(props) {
   const theme = useTheme();
+  const dispatch = useDispatch();
+  const ref = React.useRef(null);
   const duration = 200; // seconds
   const [position, setPosition] = React.useState(18);
   // phut:giay
@@ -55,6 +58,12 @@ export default function PlayerControls(props) {
     const secondLeft = value - minute * 60;
     return `${minute}:${secondLeft < 10 ? `0${secondLeft}` : secondLeft}`;
   }
+  const handleOnPlayPause = () => {
+    dispatch({
+      type: "PLAY_PAUSE",
+      payload: props.detail,
+    });
+  };
   const mainIconColor = theme.palette.mode === "dark" ? "#fff" : "#000";
   const lightIconColor =
     theme.palette.mode === "dark" ? "rgba(255,255,255,0.4)" : "rgba(0,0,0,0.4)";
@@ -138,14 +147,18 @@ export default function PlayerControls(props) {
             mt: -1,
           }}
         >
-          <IconButton aria-label="previous song">
-            <FastRewindRounded fontSize="large" htmlColor={mainIconColor} />
-          </IconButton>
           <IconButton
+            aria-label="previous song"
             onClick={() => {
-              console.log(props.detail);
+              dispatch({
+                type: "PREV_SONG",
+                payload: props.detail,
+              });
             }}
           >
+            <FastRewindRounded fontSize="large" htmlColor={mainIconColor} />
+          </IconButton>
+          <IconButton onClick={() => handleOnPlayPause()}>
             {!props.detail.playing ? (
               <PlayArrowRounded
                 sx={{ fontSize: "3rem" }}
@@ -158,7 +171,15 @@ export default function PlayerControls(props) {
               />
             )}
           </IconButton>
-          <IconButton aria-label="next song">
+          <IconButton
+            aria-label="next song"
+            onClick={() => {
+              dispatch({
+                type: "NEXT_SONG",
+                payload: props.detail,
+              });
+            }}
+          >
             <FastForwardRounded fontSize="large" htmlColor={mainIconColor} />
           </IconButton>
         </Box>
