@@ -61,5 +61,14 @@
     "nameMusic": "06🌙",
     "category": "chill",
     "image": "./img/deku5.jpg"
+  },
+  {
+    "id": 8,
+    "url": "https://www.youtube.com/watch?v=eV5z7uSZ500",
+    "playing": false,
+    "singer": "No Singer",
+    "nameMusic": "07🌙",
+    "category": "chill",
+    "image": "./img/sonTung.jpg"
   }
 ]
