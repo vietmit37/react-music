@@ -90,7 +90,7 @@ export default function PlayerControls(props) {
               <b>{props.detail.nameMusic}</b>
             </Typography>
             <Typography noWrap letterSpacing={-0.25}>
-              {props.detail.category}
+              {props.detail.category} &mdash;
             </Typography>
           </Box>
         </Box>
@@ -101,6 +101,7 @@ export default function PlayerControls(props) {
           min={0}
           step={1}
           max={duration}
+          onChange={(_, value) => setPosition(value)}
           sx={{
             color: theme.palette.mode === "dark" ? "#fff" : "rgba(0,0,0,0.87)",
             height: 4,
