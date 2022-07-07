@@ -10,20 +10,56 @@
   },
   {
     "id": 2,
-    "url": "https://www.youtube.com/watch?v=JxBnLmCOEJ8showinfo=0&enablejsapi=1&origin=http://localhost:3000",
+    "url": "https://www.youtube.com/watch?v=pT5UfrIEwuE",
     "playing": false,
-    "singer": "Den vau",
-    "nameMusic": "Ai muon nghe khong",
-    "category": "Rap",
-    "image": "./img/den.jpg"
+    "singer": "hnhngan",
+    "nameMusic": "01🌙",
+    "category": "Chill",
+    "image": "./img/hnhngan.jpeg"
   },
   {
     "id": 3,
-    "url": "https://www.youtube.com/watch?v=D9VFjACfeQM",
+    "url": "https://www.youtube.com/watch?v=u3qSplfj9hM",
     "playing": false,
-    "singer": "HIEUTHUHAI",
-    "nameMusic": "1-800-LOVE",
-    "category": "Rap",
-    "image": "./img/Hieuthu2.jpg"
+    "singer": "No Singer",
+    "nameMusic": "02🌙 ",
+    "category": "chill",
+    "image": "./img/original.jpg"
+  },
+  {
+    "id": 4,
+    "url": "https://www.youtube.com/watch?v=4df0KtYHWwo",
+    "playing": false,
+    "singer": "No Singer",
+    "nameMusic": "03🌙",
+    "category": "chill",
+    "image": "./img/deku2.jpg"
+  },
+  {
+    "id": 5,
+    "url": "https://www.youtube.com/watch?v=5cyXB-88HdM",
+    "playing": false,
+    "singer": "No Singer",
+    "nameMusic": "04🌙",
+    "category": "chill",
+    "image": "./img/deku3.jpg"
+  },
+  {
+    "id": 6,
+    "url": "https://www.youtube.com/watch?v=ATL0_4Vx53Y",
+    "playing": false,
+    "singer": "No Singer",
+    "nameMusic": "05🌙",
+    "category": "chill",
+    "image": "./img/deku4.jpg"
+  },
+  {
+    "id": 7,
+    "url": "https://www.youtube.com/watch?v=k3LS8HIQ5HU",
+    "playing": false,
+    "singer": "No Singer",
+    "nameMusic": "06🌙",
+    "category": "chill",
+    "image": "./img/deku5.jpg"
   }
 ]
