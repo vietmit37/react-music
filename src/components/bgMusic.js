@@ -1,6 +1,6 @@
-import React from "react";
+import React, { memo } from "react";
 
-export default function BgMusic() {
+function BgMusic() {
   const renderDotLight = () => {
     const dotLight = [];
     for (let i = 0; i < 200; i++) {
@@ -25,3 +25,4 @@ export default function BgMusic() {
     </>
   );
 }
+export default memo(BgMusic);

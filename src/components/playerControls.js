@@ -7,11 +7,17 @@ import IconButton from "@mui/material/IconButton";
 import Stack from "@mui/material/Stack";
 import PauseRounded from "@mui/icons-material/PauseRounded";
 import PlayArrowRounded from "@mui/icons-material/PlayArrowRounded";
-import FastForwardRounded from "@mui/icons-material/FastForwardRounded";
-import FastRewindRounded from "@mui/icons-material/FastRewindRounded";
+
 import VolumeUpRounded from "@mui/icons-material/VolumeUpRounded";
 import VolumeDownRounded from "@mui/icons-material/VolumeDownRounded";
+import FastForwardIcon from "@mui/icons-material/FastForward";
+import FastRewindIcon from "@mui/icons-material/FastRewind";
+import SkipNextIcon from "@mui/icons-material/SkipNext";
+import SkipPreviousIcon from "@mui/icons-material/SkipPrevious";
+
+import VolumeOffIcon from "@mui/icons-material/VolumeOff";
 import { useDispatch } from "react-redux";
+import VolumeMute from "@mui/icons-material/VolumeMute";
 
 const Widget = styled("div")(({ theme }) => ({
   padding: 16,
@@ -50,21 +56,14 @@ const TinyText = styled(Typography)({
 export default function PlayerControls(props) {
   const theme = useTheme();
   const dispatch = useDispatch();
-  const ref = React.useRef(null);
-  const duration = 200; // seconds
-  const [position, setPosition] = React.useState(18);
-  // phut:giay
-  function formatDuration(value) {
-    const minute = Math.floor(value / 60);
-    const secondLeft = value - minute * 60;
-    return `${minute}:${secondLeft < 10 ? `0${secondLeft}` : secondLeft}`;
-  }
+
   const handleOnPlayPause = () => {
     dispatch({
       type: "PLAY_PAUSE",
       payload: props.detail,
     });
   };
+
   const mainIconColor = theme.palette.mode === "dark" ? "#fff" : "#000";
   const lightIconColor =
     theme.palette.mode === "dark"
@@ -100,11 +99,12 @@ export default function PlayerControls(props) {
         <Slider
           aria-label="time-indicator"
           size="small"
-          value={position}
+          value={props.played * 100}
           min={0}
+          max={100}
           step={1}
-          max={duration}
-          onChange={(_, value) => setPosition(value)}
+          onChange={props.onSeek}
+          onChangeCommitted={props.handleSeekMouseUp}
           sx={{
             color: theme.palette.mode === "dark" ? "#fff" : "rgba(0,0,0,0.87)",
             height: 4,
@@ -140,8 +140,8 @@ export default function PlayerControls(props) {
             mt: -2,
           }}
         >
-          <TinyText>{formatDuration(position)}</TinyText>
-          <TinyText>-{formatDuration(duration - position)}</TinyText>
+          <TinyText>{props.elapsedTime}</TinyText>
+          <TinyText>-{props.totalTime}</TinyText>
         </Box>
         <Box
           sx={{
@@ -152,6 +152,13 @@ export default function PlayerControls(props) {
           }}
         >
           <IconButton
+            onClick={() => {
+              props.onRewind();
+            }}
+          >
+            <FastRewindIcon fontSize="small" htmlColor={mainIconColor} />
+          </IconButton>
+          <IconButton
             aria-label="previous song"
             onClick={() => {
               dispatch({
@@ -160,10 +167,10 @@ export default function PlayerControls(props) {
               });
             }}
           >
-            <FastRewindRounded fontSize="large" htmlColor={mainIconColor} />
+            <SkipPreviousIcon fontSize="large" htmlColor={mainIconColor} />
           </IconButton>
           <IconButton onClick={() => handleOnPlayPause()}>
-            {!props.detail.playing ? (
+            {!props.playing ? (
               <PlayArrowRounded
                 sx={{ fontSize: "3rem" }}
                 htmlColor={mainIconColor}
@@ -184,7 +191,14 @@ export default function PlayerControls(props) {
               });
             }}
           >
-            <FastForwardRounded fontSize="large" htmlColor={mainIconColor} />
+            <SkipNextIcon fontSize="large" htmlColor={mainIconColor} />
+          </IconButton>
+          <IconButton
+            onClick={() => {
+              props.onFastForward();
+            }}
+          >
+            <FastForwardIcon fontSize="small" htmlColor={mainIconColor} />
           </IconButton>
         </Box>
         <Stack
@@ -193,10 +207,39 @@ export default function PlayerControls(props) {
           sx={{ mb: 1, px: 1 }}
           alignItems="center"
         >
-          <VolumeDownRounded htmlColor={lightIconColor} />
+          <IconButton
+            onClick={() => {
+              dispatch({
+                type: "MUTE_MUSIC",
+                payload: props.detail,
+              });
+            }}
+          >
+            {!props.muted ? (
+              <VolumeDownRounded htmlColor={mainIconColor} />
+            ) : (
+              <VolumeMute Rounded htmlColor={lightIconColor} />
+            )}
+          </IconButton>
+
           <Slider
             aria-label="Volume"
-            defaultValue={30}
+            defaultValue={100}
+            value={props.volume * 100}
+            min={0}
+            max={100}
+            onChange={(_, value) => {
+              dispatch({
+                type: "SET_VOLUME",
+                payload: value,
+              });
+            }}
+            onChangeCommitted={() => {
+              dispatch({
+                type: "SET_VOLUME",
+                payload: props.volume * 100,
+              });
+            }}
             sx={{
               color:
                 theme.palette.mode === "dark" ? "#fff" : "rgba(0,0,0,0.87)",
@@ -216,7 +259,20 @@ export default function PlayerControls(props) {
               },
             }}
           />
-          <VolumeUpRounded htmlColor={lightIconColor} />
+          <IconButton
+            onClick={() => {
+              dispatch({
+                type: "MUTE_MUSIC",
+                payload: props.detail,
+              });
+            }}
+          >
+            {!props.muted ? (
+              <VolumeUpRounded htmlColor={mainIconColor} />
+            ) : (
+              <VolumeOffIcon htmlColor={lightIconColor} />
+            )}
+          </IconButton>
         </Stack>
       </Widget>
     </Box>

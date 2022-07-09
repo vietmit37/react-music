@@ -1,6 +1,6 @@
-import React from "react";
+import React, { memo } from "react";
 
-export default function Ballons() {
+function Ballons() {
   const renderBallons = () => {
     const ballons = [];
     for (let i = 0; i < 10; i++) {
@@ -14,3 +14,4 @@ export default function Ballons() {
     </>
   );
 }
+export default memo(Ballons);
