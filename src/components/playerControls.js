@@ -56,14 +56,6 @@ const TinyText = styled(Typography)({
 export default function PlayerControls(props) {
   const theme = useTheme();
   const dispatch = useDispatch();
-
-  const handleOnPlayPause = () => {
-    dispatch({
-      type: "PLAY_PAUSE",
-      payload: props.detail,
-    });
-  };
-
   const mainIconColor = theme.palette.mode === "dark" ? "#fff" : "#000";
   const lightIconColor =
     theme.palette.mode === "dark"
@@ -104,7 +96,6 @@ export default function PlayerControls(props) {
           max={100}
           step={1}
           onChange={props.onSeek}
-          onChangeCommitted={props.handleSeekMouseUp}
           sx={{
             color: theme.palette.mode === "dark" ? "#fff" : "rgba(0,0,0,0.87)",
             height: 4,
@@ -169,7 +160,13 @@ export default function PlayerControls(props) {
           >
             <SkipPreviousIcon fontSize="large" htmlColor={mainIconColor} />
           </IconButton>
-          <IconButton onClick={() => handleOnPlayPause()}>
+          <IconButton
+            onClick={() => {
+              dispatch({
+                type: "PLAY_PAUSE",
+              });
+            }}
+          >
             {!props.playing ? (
               <PlayArrowRounded
                 sx={{ fontSize: "3rem" }}

@@ -1,4 +1,4 @@
-import React, { memo, useRef, useState } from "react";
+import React, { memo, useRef } from "react";
 import ReactPlayer from "react-player";
 import { useDispatch, useSelector } from "react-redux";
 import PlayerControls from "./playerControls";
@@ -21,7 +21,9 @@ function ListMusic() {
   const viewMusic = useSelector((state) => state.musicReducer);
   const dispatch = useDispatch();
   const playerRef = useRef(null);
-
+  const handleOnPlayPause = (item) => {
+    dispatch({ type: "PLAY_MUSIC", payload: item });
+  };
   const handleProgress = (state) => {
     dispatch({
       type: "SET_PROGRESS",
@@ -43,21 +45,18 @@ function ListMusic() {
   const totalDuration = format(duration);
   const totalTime = format(duration - currentTime);
 
-  const handleChangeSeek = (e, value) => {
+  const handleChangeSeek = (e) => {
+    const { value } = e.target;
+    console.log(e);
     playerRef.current.seekTo(value / 100);
   };
 
-  const handleSeekMouseUp = (e, value) => {
-    playerRef.current.seekTo(value / 100);
-  };
   const renderlistMusic = () => {
     return viewMusic.data.map((item, index) => {
       return (
         <div key={index}>
           <span
-            onClick={() => {
-              dispatch({ type: "PLAY_MUSIC", payload: item });
-            }}
+            onClick={() => handleOnPlayPause(item)}
             style={{ cursor: "pointer" }}
           >
             {item.nameMusic}
@@ -99,7 +98,6 @@ function ListMusic() {
         muted={viewMusic.muted}
         volume={viewMusic.volume}
         played={viewMusic.played}
-        seeking={viewMusic.seeking}
         elapsedTime={elapsedTime}
         totalDuration={totalDuration}
         totalTime={totalTime}
@@ -109,7 +107,6 @@ function ListMusic() {
         onFastForward={handleFastForward}
         onRewind={handleRewind}
         onSeek={handleChangeSeek}
-        onSeekMouseUp={handleSeekMouseUp}
       />
     </div>
   );

@@ -2,7 +2,6 @@
   {
     "id": 1,
     "url": "https://www.youtube.com/watch?v=eV5z7uSZ500",
-    "playing": false,
     "singer": "No Singer",
     "nameMusic": "00🌙",
     "category": "chill",
@@ -12,7 +11,6 @@
   {
     "id": 2,
     "url": "https://www.youtube.com/watch?v=pT5UfrIEwuE",
-    "playing": false,
     "singer": "hnhngan",
     "nameMusic": "01🌙",
     "category": "Chill",
@@ -21,7 +19,6 @@
   {
     "id": 3,
     "url": "https://www.youtube.com/watch?v=u3qSplfj9hM",
-    "playing": false,
     "singer": "No Singer",
     "nameMusic": "02🌙 ",
     "category": "chill",
@@ -30,7 +27,6 @@
   {
     "id": 4,
     "url": "https://www.youtube.com/watch?v=4df0KtYHWwo",
-    "playing": false,
     "singer": "No Singer",
     "nameMusic": "03🌙",
     "category": "chill",
@@ -39,7 +35,6 @@
   {
     "id": 5,
     "url": "https://www.youtube.com/watch?v=5cyXB-88HdM",
-    "playing": false,
     "singer": "No Singer",
     "nameMusic": "04🌙",
     "category": "chill",
@@ -48,7 +43,6 @@
   {
     "id": 6,
     "url": "https://www.youtube.com/watch?v=ATL0_4Vx53Y",
-    "playing": false,
     "singer": "No Singer",
     "nameMusic": "05🌙",
     "category": "chill",

@@ -2,30 +2,23 @@ import data from "./data.json";
 const initialState = {
   data,
   detail: data[0],
-  playing: true,
+  playing: false,
   muted: false,
   volume: 0.5,
   played: 0,
-  seeking: false,
 };
 
 export const musicReducer = (state = initialState, action) => {
   switch (action.type) {
     case "PLAY_MUSIC":
+      console.log(action.payload);
       return {
         ...state,
         detail: action.payload,
         playing: true,
       };
     case "PLAY_PAUSE":
-      const newData1 = [...state.data];
-      newData1.forEach((item) => {
-        if (item.id === action.payload.id) {
-          state.playing = state.playing ? false : true;
-        }
-      });
-
-      return { ...state, data: newData1 };
+      return { ...state, playing: !state.playing };
     case "NEXT_SONG":
       const newData2 = [...state.data];
       console.log(action.payload);

@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React from "react";
 
 function BgMusic() {
   const renderDotLight = () => {
@@ -25,4 +25,4 @@ function BgMusic() {
     </>
   );
 }
-export default memo(BgMusic);
+export default BgMusic;

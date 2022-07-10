@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React from "react";
 
 function Ballons() {
   const renderBallons = () => {
@@ -14,4 +14,4 @@ function Ballons() {
     </>
   );
 }
-export default memo(Ballons);
+export default Ballons;
