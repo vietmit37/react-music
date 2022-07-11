@@ -47,5 +47,12 @@
     "nameMusic": "05🌙",
     "category": "chill",
     "image": "./img/deku4.jpg"
+  }, {
+    "id": 7,
+    "url": "https://www.youtube.com/watch?v=tOC22-mrIzY",
+    "singer": "No Singer",
+    "nameMusic": "06🌙",
+    "category": "chill",
+    "image": "./img/deku4.jpg"
   }
 ]
